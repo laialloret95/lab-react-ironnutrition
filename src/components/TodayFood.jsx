@@ -10,7 +10,7 @@ class TodayFood extends Component {
         return(
         <>
             <h1>Today's foods</h1>
-            <ul>
+            <ul className="container">
             {
                 this.props.foodArray ? 
                     this.props.foodArray.map((food, i) => {

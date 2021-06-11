@@ -28,7 +28,7 @@ class App extends Component {
     if (this.state.addNewFood) {
       return <Form onSubmit={this.handleSubmitForm}/>
     }
-    return <button onClick={this.handleAddNewFood}> Add New Food</button>
+    return <button className="button is-primary mb-3" onClick={this.handleAddNewFood}> Add New Food</button>
   }
 
   handleSubmitForm = (newFood) => {
@@ -64,8 +64,8 @@ class App extends Component {
       if(todayFoodCopy.filter(todayfFood => todayfFood.name.includes(food.name)).length >= 1) {
         const i = todayFoodCopy.findIndex((todayFood => todayFood.name === food.name))
 
-        todayFoodCopy[i].quantity = todayFoodCopy[i].quantity + quantity
-        todayFoodCopy[i].calories =  todayFoodCopy[i].quantity * todayFoodCopy[i].calories
+        todayFoodCopy[i].quantity = parseInt(todayFoodCopy[i].quantity) + parseInt(quantity)
+        todayFoodCopy[i].calories =  parseInt(todayFoodCopy[i].quantity) * parseInt(todayFoodCopy[i].calories)
 
         newTodayFood = todayFoodCopy
       } else {
@@ -104,29 +104,31 @@ class App extends Component {
     const { foodsArray } = this.state;
 
     return (
-      <div className="columns">
-        <div className="column">
-          {this.header()}
-
-          <div>
-              <input type="text" id="value" name="value" onChange={(e) => this.handleSearchBar(e.target.value)} />
-          </div>
-
-          {foodsArray.map((food, index) => {
-            return (
-                  <FoodBox 
-                      key={index} 
-                      food={food} 
-                      index={index}
-                      onAddQuantity={this.handleAddQuantity}
-                  />
-            )
-            })}
+      <div>
+        <div className="column my-3 mx-6">
+          <input placeholder="Search for Food" className="input is-primary" type="text" id="value" name="value" onChange={(e) => this.handleSearchBar(e.target.value)} />
         </div>
-        <div className="column">
-            <TodayFood foodArray={this.state.todayFood} totalCal={this.state.calories} onDelete={this.handleDelete}/>
-        </div> 
+        <div className="columns">
+          <div className="column is-half my-3 mx-6">
+            {this.header()}
+
+            {foodsArray.map((food, index) => {
+              return (
+                    <FoodBox 
+                        key={index} 
+                        food={food} 
+                        index={index}
+                        onAddQuantity={this.handleAddQuantity}
+                    />
+              )
+              })}
+          </div>
+          <div className="column is-half my-3 mx-6">
+              <TodayFood foodArray={this.state.todayFood} totalCal={this.state.calories} onDelete={this.handleDelete}/>
+          </div> 
+        </div>
       </div>
+      
     )
   }
 }
