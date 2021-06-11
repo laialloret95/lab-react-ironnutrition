@@ -89,6 +89,17 @@ class App extends Component {
     return sum
   }
 
+  handleDelete = (i) => {
+    const todayFoodCopy = [...this.state.todayFood];
+    todayFoodCopy.splice(i, 1)
+
+    this.setState({
+      todayFood:todayFoodCopy,
+      calories: this.sumTotalCalories(todayFoodCopy)
+    })
+  }
+  
+
   render() {
     const { foodsArray } = this.state;
 
@@ -113,7 +124,7 @@ class App extends Component {
             })}
         </div>
         <div className="column">
-            <TodayFood foodArray={this.state.todayFood} totalCal={this.state.calories}/>
+            <TodayFood foodArray={this.state.todayFood} totalCal={this.state.calories} onDelete={this.handleDelete}/>
         </div> 
       </div>
     )
