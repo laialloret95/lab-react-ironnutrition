@@ -33,7 +33,23 @@ class App extends Component {
 
     this.setState ({
       foodsArray: newFoodsArray,
-      addNewFood: false
+      addNewFood: false,
+    })
+  }
+
+  handleSearchBar = (query) => {
+    let newFoodsArray;
+    
+    if(query.length === 0) {
+      newFoodsArray = initialFoods
+
+    } else {
+      newFoodsArray = initialFoods.filter(food => food.name.toLowerCase().includes(query));
+    }
+
+
+    this.setState({
+      foodsArray: newFoodsArray
     })
   }
 
@@ -43,6 +59,10 @@ class App extends Component {
     return (
       <div>
         {this.header()}
+
+        <div>
+            <input type="text" id="value" name="value" onChange={(e) => this.handleSearchBar(e.target.value)} />
+        </div>
 
         {foodsArray.map((food, index) => {
           return (
