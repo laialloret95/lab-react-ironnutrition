@@ -28,7 +28,7 @@ class TodayFood extends Component {
                 null
             }
             </ul>
-            {this.props.totalCal > 0 && <p>Total {this.props.totalCal} cal</p>}
+            {this.props.totalCal > 0 && <p className="totalCal">Total {this.props.totalCal} cal</p>}
         </>
         )
     }

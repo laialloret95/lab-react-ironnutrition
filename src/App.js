@@ -43,14 +43,12 @@ class App extends Component {
 
   handleSearchBar = (query) => {
     let newFoodsArray;
-    
+
     if(query.length === 0) {
       newFoodsArray = initialFoods
-
     } else {
-      newFoodsArray = initialFoods.filter(food => food.name.toLowerCase().includes(query));
+      newFoodsArray = this.state.foodsArray.filter(food => food.name.toLowerCase().includes(query));
     }
-
 
     this.setState({
       foodsArray: newFoodsArray
@@ -61,7 +59,7 @@ class App extends Component {
       const food = this.state.foodsArray[index]
       const todayFoodCopy = [...this.state.todayFood]
       let newTodayFood = [];
-      
+
       if(todayFoodCopy.filter(todayFood => todayFood.name.includes(food.name)).length >= 1) {
         const i = todayFoodCopy.findIndex((todayFood => todayFood.name === food.name))
 

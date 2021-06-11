@@ -26,17 +26,17 @@ class Form extends Component {
     render() {
         
         return(
-        <div>
-            <label>Name:</label>
-            <input type="text" id="name" name="name" value={this.state.name} onChange={this.handleChange} />
+        <div className="mb-6">
+            <label>Name</label>
+            <input className="input is-info"  type="text" id="name" name="name" value={this.state.name} onChange={this.handleChange} />
 
-            <label>Calories:</label>
-            <input type="number" id="calories" name="calories" value={this.state.calories} onChange={this.handleChange} />
+            <label>Calories</label>
+            <input className="input is-info"  type="number" id="calories" name="calories" value={this.state.calories} onChange={this.handleChange} />
 
-            <label>Image:</label>
-            <input type="url" id="image" name="image" alt="foodImage" value={this.state.image} onChange={this.handleChange}/>
+            <label>Image</label>
+            <input className="input is-info"  type="url" id="image" name="image" alt="foodImage" value={this.state.image} onChange={this.handleChange}/>
 
-            <button onClick={this.handleAddFood}>Submit</button>
+            <button className="button is-info is-light" onClick={this.handleAddFood}>Submit</button>
         </div>
         )
     }
