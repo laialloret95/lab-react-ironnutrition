@@ -1,3 +1,29 @@
-.80-vw {
-  width: 80vw
+* {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+
+ul li::before {
+  content: "✅";
+  display: inline-block;
+  margin-right: 0.2rem;
+}
+
+h1 {
+  font-size: 2em !important;
+  font-weight: bold;
+}
+
+span {
+  margin: 0.5em;
+  height: 6px;
+}
+
+.red {
+  color: rgb(158, 14, 14);
 }

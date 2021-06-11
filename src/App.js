@@ -32,7 +32,8 @@ class App extends Component {
   }
 
   handleSubmitForm = (newFood) => {
-    const newFoodsArray = [newFood, ...this.state.foodsArray];
+    const newFoodsArray = [...this.state.foodsArray];
+    newFoodsArray.push(newFood);
 
     this.setState ({
       foodsArray: newFoodsArray,
@@ -57,11 +58,11 @@ class App extends Component {
   }
 
   handleAddQuantity = (index, quantity) => {
-      const food = initialFoods[index]
+      const food = this.state.foodsArray[index]
       const todayFoodCopy = [...this.state.todayFood]
       let newTodayFood = [];
-
-      if(todayFoodCopy.filter(todayfFood => todayfFood.name.includes(food.name)).length >= 1) {
+      
+      if(todayFoodCopy.filter(todayFood => todayFood.name.includes(food.name)).length >= 1) {
         const i = todayFoodCopy.findIndex((todayFood => todayFood.name === food.name))
 
         todayFoodCopy[i].quantity = parseInt(todayFoodCopy[i].quantity) + parseInt(quantity)
