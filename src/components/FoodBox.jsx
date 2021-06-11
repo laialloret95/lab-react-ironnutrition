@@ -5,11 +5,11 @@ class FoodBox extends Component {
     render() {
         const {name, calories, image, quantity } = this.props.food 
         return(
-            <div className="box">
+            <div className="box container-foods">
             <article className="media">
                 <div className="media-left">
                 <figure className="image is-64x64">
-                    <img src={image} />
+                    <img src={image} alt="foodimage"/>
                 </figure>
                 </div>
                 <div className="media-content">
